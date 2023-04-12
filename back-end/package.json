@@ -2,7 +2,7 @@
   "name": "back-end",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/api/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.38.0"
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "eslint": "^8.38.0",
+    "sinon": "^15.0.3"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
