@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import productContext from '../Context/productContext';
@@ -6,6 +6,10 @@ import productFetch from '../api/productFetch';
 
 function SearchForm() {
   const { filters, setFilters, setProducts } = useContext(productContext);
+
+  useEffect(() => async () => {
+    await productFetch.delete('/product');
+  }, []);
 
   const handleChange = ({ target: { name, value } }) => {
     setFilters({ ...filters, [name]: value });
