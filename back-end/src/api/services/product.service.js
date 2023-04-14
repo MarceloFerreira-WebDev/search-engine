@@ -6,7 +6,6 @@ const { filterProducts } = require('../utils/filterProducts');
 const getAllProducts = async (filters) => {
   const dbProducts = await Product.findAll();
   if (checkDb(dbProducts, filters)) return filterDb(dbProducts, filters);
-  console.log('nao deveria');
 
   const products = await filterProducts(filters);
 

@@ -13,7 +13,6 @@ const fetchProducts = async (productName) => {
 
 const getProductsFreeMarket = async (productType) => {
   const response = await fetchProducts(mapFreeMarket(productType));
-  console.log(productType);
   
   const readyList = response.map((product) => ({
     urlImage: product.thumbnail,
