@@ -15,12 +15,13 @@ const getProductsFreeMarket = async (productType) => {
   const response = await fetchProducts(mapFreeMarket(productType));
   
   const readyList = response.map((product) => ({
-    urlImage: product.thumbnail,
-    description: product.title,
-    category: productType,
-    price: parseFloat(product.price).toFixed(2),
-    webSource: 'Mercado Livre',
-  }));
+      urlImage: product.thumbnail,
+      description: product.title,
+      category: productType,
+      price: parseFloat(product.price).toFixed(2),
+      webSource: 'Mercado Livre',
+      link: product.permalink,
+    }));
   return readyList;
 };
 
