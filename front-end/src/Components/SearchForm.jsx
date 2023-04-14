@@ -13,19 +13,21 @@ function SearchForm() {
 
   const handleDisable = () => {
     if (!filters.source || !filters.category) return true;
+    if (filters.source === 'Buscape') return true;
     return false;
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const products = await productFetch.post('/product', filters);
+    console.log(products.data);
     setProducts(products.data);
   };
 
   return (
     <Form onSubmit={ handleSubmit }>
       <Form.Group>
-        <Form.Select name='source' onChange={ handleChange }>
+        <Form.Select name='source' onChange={ handleChange } defaultValue="">
           <option value="" hidden>Web</option>
           <option value="todas">Todas</option>
           <option value="Mercado Livre">MercadoLivre</option>
@@ -33,7 +35,7 @@ function SearchForm() {
         </Form.Select>
       </Form.Group>
       <Form.Group>
-        <Form.Select name='category' onChange={ handleChange }>
+        <Form.Select name='category' onChange={ handleChange } defaultValue="">
           <option value="" hidden>Categorias</option>
           <option value="Refrigerator">Geladeira</option>
           <option value="TV">TV</option>
@@ -46,6 +48,12 @@ function SearchForm() {
       <Button variant='primary' type='submit' disabled={ handleDisable() }>
         Search
       </Button>
+      {
+        (filters.source === 'Buscape' || filters.source === 'todas')
+        && (
+          <p>Infelizmente, o Buscapé não permite a raspagem em seu site</p>
+        )
+      }
     </Form>
   );
 }
