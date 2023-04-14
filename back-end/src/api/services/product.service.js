@@ -17,6 +17,12 @@ const getAllProducts = async (filters) => {
   return filteredProducts;
 };
 
+const deleteAllProducts = async () => {
+  const dbProducts = await Product.findAll();
+  if (dbProducts) Product.destroy({ where: {}, force: true });
+};
+
 module.exports = {
   getAllProducts,
+  deleteAllProducts,
 };

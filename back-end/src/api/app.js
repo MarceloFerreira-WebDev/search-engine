@@ -8,5 +8,6 @@ app.use(express.json());
 app.use(cors());
 
 app.post('/product', productController.getAllProducts);
+app.delete('/product', productController.deleteProductsDb);
 
 module.exports = app;
