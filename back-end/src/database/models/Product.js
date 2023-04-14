@@ -6,10 +6,6 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
-      allowNull: false,
-      type: DataTypes.STRING,
-    },
     urlImage: {
       allowNull: false,
       type: DataTypes.STRING,
@@ -20,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     category: {
       allowNull: false,
-      Type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     price: {
       allowNull: false,
-      type: DataTypes.DECIMAL(4, 2),
+      type: DataTypes.DECIMAL(10, 2),
     },
     webSource: {
       allowNull: false,

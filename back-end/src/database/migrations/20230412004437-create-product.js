@@ -8,10 +8,6 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
       url_image: {
         allowNull: false,
         type: Sequelize.STRING,
@@ -26,7 +22,7 @@ module.exports = {
       },
       price: {
         allowNull: false,
-        type: Sequelize.DECIMAL(4, 2),
+        type: Sequelize.DECIMAL(10, 2),
       },
       web_source: {
         allowNull: false,
