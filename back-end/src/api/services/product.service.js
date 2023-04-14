@@ -19,7 +19,10 @@ const getAllProducts = async (filters) => {
 
 const deleteAllProducts = async () => {
   const dbProducts = await Product.findAll();
-  if (dbProducts) Product.destroy({ where: {}, force: true });
+  if (dbProducts) {
+    await Product.destroy({ where: {}, force: true });
+    await Product.sequelize.query('ALTER TABLE products AUTO_INCREMENT = 1');
+  }
 };
 
 module.exports = {
