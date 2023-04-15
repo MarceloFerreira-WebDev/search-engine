@@ -9,9 +9,18 @@ function Provider({ children }) {
     name: '',
   });
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const contextValue = useMemo(
-    () => ({ filters, setFilters, products, setProducts }), [filters, products],
+    () => ({
+      filters,
+      setFilters,
+      products,
+      setProducts,
+      loading,
+      setLoading,
+    }),
+    [filters, products, loading],
   );
 
   return (

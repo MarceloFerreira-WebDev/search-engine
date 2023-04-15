@@ -5,7 +5,7 @@ import productContext from '../Context/productContext';
 import productFetch from '../api/productFetch';
 
 function SearchForm() {
-  const { filters, setFilters, setProducts } = useContext(productContext);
+  const { filters, setFilters, setProducts, setLoading } = useContext(productContext);
 
   useEffect(() => async () => {
     await productFetch.delete('/product');
@@ -22,42 +22,55 @@ function SearchForm() {
   };
 
   const handleSubmit = async (event) => {
+    setLoading(true);
     event.preventDefault();
     const products = await productFetch.post('/product', filters);
-    console.log(products.data);
     setProducts(products.data);
+    setLoading(false);
   };
 
   return (
-    <Form onSubmit={ handleSubmit }>
+    <Form onSubmit={ handleSubmit } className="form">
       <Form.Group>
-        <Form.Select name='source' onChange={ handleChange } defaultValue="">
+        <Form.Select 
+          name='source'
+          onChange={ handleChange }
+          defaultValue=""
+          className="select"
+        >
           <option value="" hidden>Web</option>
           <option value="todas">Todas</option>
-          <option value="Mercado Livre">MercadoLivre</option>
+          <option value="Mercado Livre">Mercado Livre</option>
           <option value="Buscape">Buscapé</option>
         </Form.Select>
       </Form.Group>
       <Form.Group>
-        <Form.Select name='category' onChange={ handleChange } defaultValue="">
+        <Form.Select
+          name='category'
+          onChange={ handleChange }
+          defaultValue=""
+          className="select"
+        >
           <option value="" hidden>Categorias</option>
           <option value="Refrigerator">Geladeira</option>
           <option value="TV">TV</option>
           <option value="Celular">Celular</option>
         </Form.Select>
       </Form.Group>
-      <Form.Group>
-        <Form.Control name='name' type='text' placeholder='pesquisar' onChange={ handleChange }/>
-      </Form.Group>
-      <Button variant='primary' type='submit' disabled={ handleDisable() }>
-        Search
-      </Button>
-      {
-        (filters.source === 'Buscape' || filters.source === 'todas')
-        && (
-          <p>Infelizmente, o Buscapé não permite a raspagem em seu site</p>
-        )
-      }
+      <div className="search-by-name">
+        <Form.Group className="search-input-div">
+          <Form.Control
+            name='name'
+            type='text'
+            placeholder='pesquisar'
+            onChange={ handleChange }
+            className="search-input"
+          />
+        </Form.Group>
+        <Button type='submit' disabled={ handleDisable() } className="form-btn blue-btn">
+          Search
+        </Button>
+      </div>
     </Form>
   );
 }
