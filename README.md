@@ -27,7 +27,7 @@ Neste Projeto podemos preencher o formulário de pesquisa para escolher qual loj
 
 3. Lembre-se de configurar as variáveis de ambiente:
   *Você vai precisar configurar as variáveis tanto do backend quanto do frontend:
-    *Basta verificar quais são necessárias no arquivo config.js, do Sequelize no caminho `search-engine/back-end/src/database/config/config.js`; e no arquivo productFetch.js, para o axios no caminho `search-engine/front-end/src/api/productFetch.js`.
+    *Basta verificar quais são necessárias no arquivo config.js, do Sequelize no caminho `search-engine/back-end/src/database/config/config.js`(aqui também, adicione uma linha de código no topo do arquivo para ele escutar suas variáveis: `require('dotenv').config();`); e no arquivo productFetch.js, para o axios no caminho `search-engine/front-end/src/api/productFetch.js`.
 
 3. Como executar a aplicação:
   * Após a instalação das dependências e a configuração das variáveis, basta executar o comando npm start, tanto no back-end, quanto no front-end, para ambos funcionarem
